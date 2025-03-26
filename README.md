@@ -106,7 +106,9 @@ This project was implemented according to the following specifications:
 
 ---
 
-## 👤 Contact
+## 👤 Author & Contact
 
-For questions or issues, please contact:
+- GitHub: [github.com/M-Wrath](https://github.com/M-Wrath)
+
+For project inquiries:
 <aldin@neuberger-consulting.com>

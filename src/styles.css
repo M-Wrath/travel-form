@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "Sansita Swashed";
+  src: url("./assets/fonts/SansitaSwashed-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Overlock";
+  src: url("./assets/fonts/Overlock-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply body font */
+body {
+  font-family: "Overlock", sans-serif;
+  margin: 0;
+  background-color: #f9f6f1; /* beige background */
+  color: #000;
+}

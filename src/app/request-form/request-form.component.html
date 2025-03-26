@@ -1,0 +1,330 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-wrapper">
+  <!-- Urlaubsdaten -->
+  <h2 class="section-title">Ihre Urlaubsdaten</h2>
+
+  <div class="form-row">
+    <label for="reisezeitraum">Reisezeitraum *</label>
+    <div class="input-wrapper">
+      <input
+        type="text"
+        id="reisezeitraum"
+        formControlName="reisezeitraum"
+        class="form-input date-input"
+        readonly
+        required
+      />
+      <svg class="calendar-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <rect
+          x="3"
+          y="4"
+          width="18"
+          height="18"
+          rx="2"
+          ry="2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <line
+          x1="3"
+          y1="10"
+          x2="21"
+          y2="10"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <line
+          x1="8"
+          y1="2"
+          x2="8"
+          y2="6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+        <line
+          x1="16"
+          y1="2"
+          x2="16"
+          y2="6"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+        />
+        <circle cx="7.5" cy="14" r="1" fill="currentColor" />
+        <circle cx="12" cy="14" r="1" fill="currentColor" />
+        <circle cx="16.5" cy="14" r="1" fill="currentColor" />
+        <circle cx="7.5" cy="18" r="1" fill="currentColor" />
+        <circle cx="12" cy="18" r="1" fill="currentColor" />
+        <circle cx="16.5" cy="18" r="1" fill="currentColor" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label for="erwachsene">Anzahl Erwachsene *</label>
+    <div class="input-wrapper">
+      <input
+        type="number"
+        id="erwachsene"
+        formControlName="erwachsene"
+        class="form-input"
+        min="1"
+        [class.error]="isNumberInvalid('erwachsene')"
+        title="Anzahl Erwachsene"
+        required
+      />
+      <div class="number-tooltip" *ngIf="isNumberInvalid('erwachsene')">
+        Geben Sie eine positive Zahl ein.
+      </div>
+    </div>
+  </div>
+
+  <!-- Kinder -->
+  <h2 class="section-title">Kinder</h2>
+  <p class="section-subtitle">
+    Als Familienspezialist ist es uns wichtig, Ihnen ein maßgeschneidertes
+    Angebot zu übermitteln. Bitte geben Sie uns daher den Vornamen und das Alter
+    Ihrer Kinder/Ihres Kindes an.
+  </p>
+
+  <div formArrayName="kinder">
+    <div
+      *ngFor="let kind of kinder.controls; let i = index"
+      [formGroupName]="i"
+      class="child-block"
+    >
+      <label>Name des Kindes *</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          formControlName="name"
+          class="form-input"
+          required
+          title="Name des Kindes"
+          [class.error]="kind.get('name')?.invalid && kind.get('name')?.touched"
+        />
+        <div
+          class="tooltip"
+          *ngIf="kind.get('name')?.invalid && kind.get('name')?.touched"
+        >
+          ⚠️ Fülle dieses Feld aus.
+        </div>
+      </div>
+
+      <label>Geburtstag *</label>
+      <div class="birthday-row">
+        <select formControlName="tag" class="form-input" required title="Tag">
+          <option value="">Tag</option>
+          <option *ngFor="let t of [].constructor(31); let i = index">
+            {{ i + 1 }}
+          </option>
+        </select>
+
+        <select
+          formControlName="monat"
+          class="form-input"
+          required
+          title="Monat"
+        >
+          <option value="">Monat</option>
+          <option value="Jan.">Jan.</option>
+          <option value="Feb.">Feb.</option>
+          <option value="Mär.">Mär.</option>
+          <option value="Apr.">Apr.</option>
+          <option value="Mai">Mai</option>
+          <option value="Jun.">Jun.</option>
+          <option value="Jul.">Jul.</option>
+          <option value="Aug.">Aug.</option>
+          <option value="Sep.">Sep.</option>
+          <option value="Okt.">Okt.</option>
+          <option value="Nov.">Nov.</option>
+          <option value="Dez.">Dez.</option>
+        </select>
+
+        <select formControlName="jahr" class="form-input" required title="Jahr">
+          <option value="">Jahr</option>
+          <option *ngFor="let y of years">{{ y }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="child-buttons">
+    <a href="#" class="add-child" (click)="addChild($event)"
+      >KIND HINZUFÜGEN →</a
+    >
+    <a href="#" class="remove-child" (click)="removeChild($event)"
+      >Kind entfernen</a
+    >
+  </div>
+
+  <!-- Kontaktdaten -->
+  <h2 class="section-title">Ihre Kontaktdaten</h2>
+
+  <div formGroupName="kontakt">
+    <div class="form-row" [class.error]="isFieldInvalid('kontakt.vorname')">
+      <label for="vorname">Vorname *</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="vorname"
+          formControlName="vorname"
+          class="form-input"
+          title="Vorname"
+          required
+        />
+        <div class="number-tooltip" *ngIf="isFieldInvalid('kontakt.vorname')">
+          Geben Sie einen gültigen Namen ein.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="nachname">Nachname *</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="nachname"
+          formControlName="nachname"
+          class="form-input"
+          [class.error]="isFieldInvalid('kontakt.nachname')"
+          title="Nachname"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="geschlecht">Geschlecht *</label>
+      <div class="input-wrapper">
+        <select
+          id="geschlecht"
+          formControlName="geschlecht"
+          class="form-input"
+          title="Geschlecht"
+          required
+        >
+          <option selected disabled>Auswählen</option>
+          <option>Männlich</option>
+          <option>Weiblich</option>
+        </select>
+        <div
+          class="select-tooltip"
+          *ngIf="isFieldInvalid('kontakt.geschlecht')"
+        >
+          Fülle dieses Feld aus.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="email">E-Mail *</label>
+      <div class="input-wrapper">
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-input"
+          title="E-Mail"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="land">Land *</label>
+      <div class="input-wrapper">
+        <select
+          id="land"
+          formControlName="land"
+          class="form-input"
+          title="Land"
+          required
+        >
+          <option selected disabled>Auswählen</option>
+          <option>Deutschland</option>
+          <option>Österreich</option>
+          <option>Schweiz</option>
+          <option disabled>──────────</option>
+          <option>Afghanistan</option>
+          <option>Ägypten</option>
+          <option>Ålandinseln</option>
+          <option>Albanien</option>
+          <option>Algerien</option>
+          <option>Amerikanisch-Samoa</option>
+          <!-- Add more as needed -->
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="plz">PLZ *</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="plz"
+          formControlName="plz"
+          class="form-input"
+          title="PLZ"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="stadt">Stadt *</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="stadt"
+          formControlName="stadt"
+          class="form-input"
+          title="Stadt"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="strasse">Straße *</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="strasse"
+          formControlName="strasse"
+          class="form-input"
+          title="Straße"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="telefon">Telefon</label>
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="telefon"
+          formControlName="telefon"
+          class="form-input"
+          title="Telefon"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="wunsch">Fragen oder Wünsche</label>
+      <div class="input-wrapper">
+        <textarea
+          id="wunsch"
+          formControlName="wunsch"
+          class="form-textarea"
+          title="Fragen oder Wünsche"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="submitted && form.invalid" class="error-banner">
+    <div class="error-title">
+      Beim Senden des Formulars ist ein Fehler aufgetreten!
+    </div>
+    <div class="error-subtitle">
+      Die ungültigen Felder wurden hervorgehoben.
+    </div>
+  </div>
+
+  <button type="submit" class="submit-button">ANFRAGE<br />ABSENDEN</button>
+</form>

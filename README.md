@@ -1,59 +1,112 @@
-# TravelForm
+# 📋 Reiseanfrageformular (Travel Request Form)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+A pixel-perfect responsive travel request form built with **Angular**, using **Reactive Forms**, **Flatpickr**, and **local Google Fonts**. The design strictly follows the provided specifications including error messages, validation states, and dynamic form logic.
 
-## Development server
+---
 
-To start a local development server, run:
+## ✅ Features
 
-```bash
+- 🎯 Exact match to provided design
+- 📱 Fully responsive (Desktop + Mobile)
+- 🧠 Reactive Forms with dynamic validation
+- 📆 Reisezeitraum with Flatpickr date range picker (2 months, German locale)
+- ⚠️ HTML5 native validation fallback
+- ➕/➖ Add/Remove dynamic child fields
+- 📎 Custom styled tooltips for invalid inputs
+- 🖍️ Custom styles and locally embedded fonts (no CDN)
+- ❌ Form validation with visual feedback
+
+---
+
+## 🧱 Tech Stack
+
+- **Angular 17**
+- **TypeScript**
+- **Flatpickr with German localization**
+- **CSS3 / HTML5**
+- **Local Fonts (Sansita Swashed, Overlock)**
+
+---
+
+## 🗂 Project Structure
+
+```text
+travel-form/
+├── src/
+│   ├── app/
+│   │   ├── request-form/
+│   │   │   ├── request-form.component.ts
+│   │   │   ├── request-form.component.html
+│   │   │   └── request-form.component.css
+│   ├── styles.css
+│   └── assets/
+│       └── fonts/
+└── README.md
+```
+
+---
+
+## 🚀 Setup & Run
+
+1 . **Install dependencies**  
+`bash
+npm install
+`
+
+2 . **Start development server**  
+`bash
 ng serve
-```
+`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+3 . **View in browser**  
+ Navigate to `http://localhost:4200`
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📌 Implementation Details
 
-```bash
-ng generate component component-name
-```
+- **Form Validation**
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+  - Required field validation with visual feedback
+  - Dynamic error messages and tooltips
+  - Custom validation for number inputs
 
-```bash
-ng generate --help
-```
+- **Responsive Design**
 
-## Building
+  - Adapts to mobile and desktop views
+  - Responsive date picker (1 month mobile, 2 months desktop)
+  - Dynamic layout adjustments
 
-To build the project run:
+- **Dynamic Children**
+  - Add/remove child entries
+  - Individual validation per child
+  - Birth date selection with day/month/year
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ⚡ Technical Highlights
 
-## Running unit tests
+- Custom flatpickr implementation with German localization
+- Reactive form with nested form groups and arrays
+- CSS-only tooltips and validation states
+- No external UI frameworks used
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 📄 Project Requirements
 
-## Running end-to-end tests
+This project was implemented according to the following specifications:
 
-For end-to-end (e2e) testing, run:
+- Angular implementation with Reactive Forms
+- Exact visual match to provided design
+- Form validation with error highlighting
+- Dynamic child fields functionality
+- Local font implementation
+- Responsive layout for mobile and desktop
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 👤 Contact
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For questions or issues, please contact:
+<aldin@neuberger-consulting.com>

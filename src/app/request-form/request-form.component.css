@@ -1,0 +1,546 @@
+/* Base layout styles */
+.form-wrapper {
+  max-width: 1200px;
+  margin: -10px auto 0;
+  padding: 20px 160px 10px 120px;
+  background-color: #dfdfdf;
+  font-family: "Overlock", sans-serif;
+  color: #000;
+}
+
+/* Section headings */
+.section-title {
+  font-family: "Sansita Swashed", cursive;
+  font-size: 32px;
+  color: #aa2e24;
+  margin: 25px -60px 20px;
+  white-space: nowrap;
+  grid-column: 1 / -1;
+  text-align: left;
+}
+
+.section-subtitle {
+  margin-left: -50px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+  grid-column: 1 / -1;
+}
+
+/* Form grid layout */
+.form-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+  gap: 50px;
+  margin-bottom: 18px;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.form-row label {
+  text-align: right;
+  font-size: 18px;
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+/* Input styling */
+.form-input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  box-sizing: border-box;
+  height: 44px;
+  line-height: 24px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+textarea.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Children section */
+[formArrayName="kinder"] {
+  width: 100%;
+  display: grid;
+  gap: 18px;
+  padding-left: 0;
+}
+
+.child-block {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  align-items: start;
+  gap: 50px;
+  margin-bottom: 18px;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.child-block label {
+  text-align: right;
+  font-size: 18px;
+  padding-top: 10px;
+  color: #000;
+}
+
+.birthday-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.birthday-row select {
+  min-width: 0;
+  padding-left: 8px;
+  padding-right: 24px;
+  text-overflow: ellipsis;
+}
+
+/* Child buttons */
+.child-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 32px;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 160px;
+}
+
+.add-child {
+  color: #aa2e24;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.remove-child {
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Submit button */
+.submit-button {
+  background-color: #aa2e24;
+  color: #fff;
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto 0;
+  text-transform: uppercase;
+  width: auto !important;
+  min-width: 180px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.submit-button:hover {
+  background-color: #92261e;
+}
+
+/* Form validation */
+.was-validated input:invalid,
+.was-validated select:invalid,
+.was-validated textarea:invalid,
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+input.flatpickr-input:invalid,
+.form-input.error,
+select.error,
+textarea.error,
+.form-row.error input,
+.form-row.error select,
+.form-row.error textarea {
+  border: 2px solid #aa2e24;
+}
+
+/* Error banner */
+.error-banner {
+  background-color: #aa2e24;
+  color: white;
+  padding: 24px;
+  text-align: center;
+  margin: 0 40px 32px;
+  width: calc(120% - 200px);
+  box-sizing: border-box;
+  margin-left: auto;
+}
+
+.error-title {
+  font-family: "Sansita Swashed", cursive;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 6px;
+}
+
+.error-subtitle {
+  font-family: "Overlock", sans-serif;
+  font-size: 14px;
+}
+
+/* Tooltips */
+.tooltip {
+  position: absolute;
+  top: calc(100% + 15px);
+  left: 0;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 2px;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  color: #333;
+  font-weight: 500;
+  margin-left: 120px;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 15px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 12px solid #ccc;
+}
+
+.number-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  color: white;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  z-index: 999;
+  white-space: nowrap;
+}
+
+.number-tooltip::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid #333;
+}
+
+.select-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: -25px;
+  margin-left: -50px;
+  background-color: #e4e4e4;
+  color: rgb(0, 0, 0);
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+/* Date input styling */
+.date-input {
+  cursor: pointer;
+  padding-right: 44px !important;
+  background-color: #fff !important;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #aa2e24;
+}
+
+/* Enhanced calendar icon styling */
+.calendar-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: #aa2e24;
+  color: #aa2e24;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+}
+
+.calendar-icon:hover {
+  color: #dd3f32;
+  stroke: #dd3f32;
+  transform: translateY(-50%) scale(1.05);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+.calendar-icon:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .form-wrapper {
+    padding: 20px;
+    margin: 0;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin: 20px 0 16px;
+    white-space: normal;
+  }
+
+  .section-subtitle {
+    margin-left: 0;
+    font-size: 16px;
+  }
+
+  .form-row,
+  .child-block {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-left: 0;
+    margin-bottom: 24px;
+  }
+
+  .form-row label,
+  .child-block label {
+    text-align: left;
+    padding-top: 0;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  /* Keep birthday fields side by side on mobile */
+  .birthday-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .form-input,
+  select,
+  textarea,
+  .add-child,
+  .submit-button {
+    font-size: 17px;
+  }
+
+  .child-buttons {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 8px;
+    margin-bottom: 32px;
+  }
+
+  .submit-button {
+    width: auto !important;
+    min-width: 180px;
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 16px;
+  }
+
+  .error-banner {
+    width: 100%;
+    margin: 0 0 32px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .tooltip {
+    margin-left: 0;
+  }
+
+  /* Fix calendar on mobile */
+  .flatpickr-calendar {
+    width: 100% !important;
+    max-width: 95vw !important;
+    min-width: 280px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 4px !important;
+  }
+
+  /* Force single month display on mobile */
+  .flatpickr-calendar .flatpickr-months {
+    flex-direction: row !important;
+  }
+
+  /* Hide second month on small screens */
+  .flatpickr-calendar .flatpickr-months > div:nth-child(2) {
+    display: none !important;
+  }
+
+  .flatpickr-calendar .dayContainer {
+    min-width: 210px !important;
+    max-width: none !important;
+  }
+
+  /* Make calendar days more tappable */
+  .flatpickr-calendar .flatpickr-day {
+    margin: 1px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+  }
+
+  /* Show only one month in calendar on mobile */
+  .flatpickr-months .flatpickr-month:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Fix form padding */
+  .form-row.error textarea,
+  .form-row.error select,
+  .form-row.error input {
+    margin-bottom: 24px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .birthday-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .birthday-row select {
+    padding-left: 4px;
+    padding-right: 16px;
+    font-size: 16px;
+  }
+
+  .child-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .submit-button {
+    width: 100% !important;
+  }
+
+  /* Ensure calendar fits on very small screens */
+  .flatpickr-calendar {
+    max-width: 90vw !important;
+    font-size: 14px !important;
+  }
+
+  .flatpickr-calendar .flatpickr-day {
+    height: 32px !important;
+    line-height: 32px !important;
+    margin: 1px !important;
+  }
+}
+
+/* Flatpickr styling - single source of truth for flatpickr styles */
+.flatpickr-calendar {
+  background: #fff !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+  padding: 8px !important;
+  width: auto !important;
+  max-width: 680px !important;
+  z-index: 999 !important;
+}
+
+/* Ensure month container has proper styling */
+.flatpickr-months {
+  display: flex !important;
+  justify-content: space-around !important;
+}
+
+/* Ensure calendar days have appropriate sizing */
+.flatpickr-days {
+  display: flex !important;
+  width: 100% !important;
+}
+
+.dayContainer {
+  width: 100% !important;
+  min-width: 0 !important; /* Prevents overflow */
+  max-width: none !important;
+}
+
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+  color: #f4b860 !important;
+  fill: #f4b860 !important;
+  background: transparent !important;
+}
+
+.flatpickr-weekdays {
+  background: transparent !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover {
+  background: #f4b860 !important;
+  border-color: #f4b860 !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.flatpickr-day.inRange,
+.flatpickr-day.prevMonthDay.inRange,
+.flatpickr-day.nextMonthDay.inRange,
+.flatpickr-day.today.inRange,
+.flatpickr-day.prevMonthDay.today.inRange,
+.flatpickr-day.nextMonthDay.today.inRange {
+  background: #fbe8d3 !important;
+  border-color: #fbe8d3 !important;
+  color: #333 !important;
+}
+
+.flatpickr-day:hover:not(.flatpickr-disabled):not(.selected):not(.today):not(
+    .inRange
+  ) {
+  background: #ffe7c100 !important;
+  border-color: #fcb138 !important;
+  color: #fcb138 !important;
+}
+
+.flatpickr-day.today {
+  gap: 8px;
+}

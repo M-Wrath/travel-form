@@ -106,6 +106,29 @@ This project was implemented according to the following specifications:
 
 ---
 
+## ⏱ Development Time
+
+The implementation of this project took approximately **10 hours**.  
+This includes:
+
+- Planning and requirements analysis
+- Layout matching and pixel-perfect styling
+- Custom validation logic implementation
+- Responsive design and testing
+- Cross-browser compatibility checks
+- Mobile device testing
+- Documentation
+
+Time breakdown:
+
+- Setup & Structure: 1h
+- Form Layout: 2h
+- Validation Logic: 2h
+- Styling & Responsive Design: 3h
+- Testing & Refinements: 2h
+
+---
+
 ## 👤 Author & Contact
 
 - GitHub: [github.com/M-Wrath](https://github.com/M-Wrath)
